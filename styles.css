@@ -35,34 +35,6 @@ header,footer{
 main{
   height: 84vh;
   background-color: #232D5E;
-  display: flex;
-}
-.memory-game{
-  width: 500px;
-  height: 95%;
-  margin: auto;
-  display: flex;
-  flex-wrap: wrap;
-}
-.memory-card{
-  width: calc(25% - 4px); /*subtracts the margin to fix layout*/
-  height: calc(33.333% - 4px);
-  position: relative;
-  margin: 2px;
-  transform: scale(1);
-}
-.memory-card:active{
-  transform: scale(.97);
-  transition: transform .2s;
-}
-
-.front-face,.back-face{
-  width: 100%;
-  height: 100%;
-  padding: .2em;
-  position: absolute;
-  border-radius: 5px;
-  background-color: #1c1c1c;
 }
 footer{
   border-top: 1px solid #D5A001;
