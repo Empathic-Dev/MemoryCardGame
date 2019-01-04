@@ -43,6 +43,7 @@ main{
   margin: auto;
   display: flex;
   flex-wrap: wrap;
+  perspective: 1000px; /*creates the 3d space*/
 }
 .memory-card{
   width: calc(25% - 4px); /*subtracts the margin to fix layout*/
@@ -50,6 +51,8 @@ main{
   position: relative;
   margin: 2px;
   transform: scale(1);
+  transform-style: preserve-3d; /*inserts the cards inside the 3d space*/
+  transition: transform .5s;
 }
 .memory-card:active{
   transform: scale(.97);
@@ -65,6 +68,10 @@ main{
   position: absolute;
   border-radius: 5px;
   background-color: #1c1c1c;
+  backface-visibility: hidden;
+}
+.front-face{
+  transform: rotateY(180deg);
 }
 footer{
   border-top: 1px solid #D5A001;
