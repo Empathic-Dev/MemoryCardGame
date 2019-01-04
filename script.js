@@ -6,7 +6,7 @@ let firstCard, secondCard;
 
 function flipCard(){
   // access the class list off the memory-card and add the flip class. if the flip class is present, remove it. if it's not, add it.
-  this.classList.toggle('flip');
+  this.classList.add('flip');
 
   // if hasFlippedCard is false this means that this is the first time the player has clicked a card, if its true that means the player clicked the second card
   if (!hasFlippedCard){
@@ -15,10 +15,12 @@ function flipCard(){
     firstCard = this;
   } else {
     // second click
-    hasFlippedCard = false;
+    hasFlippedCard = true;
     secondCard = this;
 
-  // do cards match?
+    // do cards match?
+    console.log(firstCard.dataset.matchnumber); 
+    console.log(secondCard.dataset.matchnumber);
   }
 
   /* console.log('I was clicked!'); // check to make sure function works
