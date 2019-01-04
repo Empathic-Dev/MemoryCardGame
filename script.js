@@ -2,12 +2,15 @@
 const cards = document.querySelectorAll('.memory-card');
 
 let hasFlippedCard = false;
+let lockBoard = false;
 let firstCard, secondCard;
 
   // the 'this' keyword represents the element that fired the click event 
       //  console.log(this); returns the element that was clicked
 
 function flipCard(){
+  if (lockBoard) return; // if lockBoard is true, exit the function
+
   // access the class list off the memory-card and add the flip class. if the flip class is present, remove it. if it's not, add it.
   this.classList.add('flip');
 
@@ -50,9 +53,11 @@ function disableCards(){
 }
 
 function unflipCards(){
+  lockBoard = true; 
   setTimeout(() => {
     firstCard.classList.remove('flip');
     secondCard.classList.remove('flip');
+    lockBoard = false; // unlock the board after the cards have been flipped
   }, 1500);
 }
 
