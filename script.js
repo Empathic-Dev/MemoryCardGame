@@ -18,9 +18,19 @@ function flipCard(){
     hasFlippedCard = true;
     secondCard = this;
 
-    // do cards match?
-    console.log(firstCard.dataset.matchnumber); 
-    console.log(secondCard.dataset.matchnumber);
+    // matching logic: if the data- value from the first and second cards are the same remove the event listener from the cards to prevent them from being clicked again. if the data- values don't match, unflip the cards.
+    if (firstCard.dataset.matchnumber === secondCard.dataset.matchnumber){
+      // they match!
+      firstCard.removeEventListener('click', flipCard);
+      secondCard.removeEventListener('click', flipCard);
+    } else {
+      // they dont match
+      setTimeout(() => {
+        firstCard.classList.remove('flip');
+        secondCard.classList.remove('flip');
+      }, 1500);
+    }
+    
   }
 
   /* console.log('I was clicked!'); // check to make sure function works
