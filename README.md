@@ -41,3 +41,40 @@ front-face{
   transform: rotateY(180deg);
 }
 ```
+
+```javascript
+/*when a player clicks a card we have to know if its the first or the second card they clicked so we can perform the matching logic*/
+let hasFlippedCard = false; 
+let firstCard, secondCard;
+
+function flipCard(){
+  this.classList.add('flip');
+
+// if hasFlippedCard is false, this is the first card the player clicked. if true this is the second card the player clicked
+  if (!hasFlippedCard){
+    hasFlippedCard = true;
+    firstCard = this; // this in this context represents the first card
+  } else {
+    hasFlippedCard = false;
+    secondCard = this; // this in this context represents the second card
+  }
+}
+```
+
+Now that we have the clicked cards stored in a variable, we have to check is they match. To do that we can make use of a the "data-". Its a handy HTML attribute that allows you to store any kind of information you want:
+
+```html
+<!--you can name your data anything you want. however everything has to be lowercase or it wont work.-->
+<div class="memory-card" data-matchnumber="firstmatch">
+  <img src="/imgs/front-face1.png" alt="" class="front-face">
+  <img src="/imgs/back-face.png" alt="" class="back-face">
+</div>
+```
+
+In order to access the data values we set in the HTML we have to use the .dataset object:
+
+```javascript
+//after you click the second card the console will return the value of matchnumber, the data attribute you set:
+    console.log(firstCard.dataset.matchnumber);
+    console.log(secondCard.dataset.matchnumber);
+```
