@@ -1,7 +1,7 @@
 # MemoryCardGame
 Memory Card Game - JavaScript Tutorial via FreeCodeCamp/CodeSketch
 
-## JavaScript Notes
+## Flip Card Logic Notes
 
 ```javascript
 // makes a list of all card elements and store them in a constant:
@@ -17,7 +17,7 @@ cards.forEach(card => card.addEventListener('click', flipCard));
 
 ```
 
-### CSS Notes
+### 3D Effect & CSS Perspective Notes
 
 ```css
 /*when the flip class is present, rotate the element 180 deg*/
@@ -41,6 +41,8 @@ front-face{
   transform: rotateY(180deg);
 }
 ```
+
+## Store Card Logic Notes
 
 ```javascript
 /*when a player clicks a card we have to know if its the first or the second card they clicked so we can perform the matching logic*/
