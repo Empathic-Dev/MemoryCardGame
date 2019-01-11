@@ -13,8 +13,16 @@ function flipCard(){
   } else {
     hasFlippedCard = false;
     secondCard = this;
-    console.log(firstCard.dataset.matchnumber);
-    console.log(secondCard.dataset.matchnumber);
+
+    if (firstCard.dataset.matchnumber === secondCard.dataset.matchnumber){
+      firstCard.removeEventListener('click', flipCard);
+      secondCard.removeEventListener('click', flipCard);
+    } else {
+      setTimeout(() => {
+        firstCard.classList.remove('flip');
+        secondCard.classList.remove('flip');
+      }, 1500);
+    }
   }
 }
 

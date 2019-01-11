@@ -80,3 +80,23 @@ In order to access the data values we set in the HTML we have to use the .datase
     console.log(firstCard.dataset.matchnumber);
     console.log(secondCard.dataset.matchnumber);
 ```
+
+## Match Card Logic Notes
+
+Now that we can identify the cards we have to check if the dataset.matchnumber from the first and second card are the same.
+
+```javascript
+// if they are the same, remove the event listener and flipCard function to prevent them from being clicked again.
+  if (firstCard.dataset.matchnumber === secondCard.dataset.matchnumber){
+    // if matching
+    firstCard.removeEventListener('click', flipCard);
+    secondCard.removeEventListener('click', flipCard);
+  } else {
+    setTimeout(() => {
+      //if not matching
+      firstCard.classList.remove('flip');
+      secondCard.classList.remove('flip');
+    }, 1500);
+  }
+
+```
