@@ -86,17 +86,15 @@ In order to access the data values we set in the HTML we have to use the .datase
 Now that we can identify the cards we have to check if the dataset.matchnumber from the first and second card are the same.
 
 ```javascript
-// if they are the same, remove the event listener and flipCard function to prevent them from being clicked again.
   if (firstCard.dataset.matchnumber === secondCard.dataset.matchnumber){
-    // if matching
+// if they are the same, remove the event listener and flipCard function to prevent them from being clicked and flipped back:
     firstCard.removeEventListener('click', flipCard);
     secondCard.removeEventListener('click', flipCard);
   } else {
+//if not matching, remove the flip class so they flip back. Because this happens so fast we have to wrap it in a timer method:
     setTimeout(() => {
-      //if not matching
       firstCard.classList.remove('flip');
       secondCard.classList.remove('flip');
     }, 1500);
   }
-
 ```
