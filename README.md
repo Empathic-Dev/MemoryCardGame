@@ -98,3 +98,46 @@ Now that we can identify the cards we have to check if the dataset.matchnumber f
     }, 1500);
   }
 ```
+
+## Refactoring Notes
+
+Nesting functions is hard to read so before we move on we're going to separate these functions:
+
+```javascript
+function flipCard(){
+  this.classList.add('flip');
+
+  if (!hasFlippedCard){
+    hasFlippedCard = true;
+    firstCard = this;
+  } else {
+    hasFlippedCard = false;
+    secondCard = this;
+
+    checkForMatch();
+  }
+}
+
+cards.forEach(card => card.addEventListener('click', flipCard));
+
+function checkForMatch() {
+  if (firstCard.dataset.matchnumber === secondCard.dataset.matchnumber) {
+    disableCards();
+  }
+  else {
+    unflipCards();
+}
+
+function disableCards() {
+  firstCard.removeEventListener('click', flipCard);
+  secondCard.removeEventListener('click', flipCard);
+}
+
+function unflipCards() {
+  setTimeout(() => {
+    firstCard.classList.remove('flip');
+    secondCard.classList.remove('flip');
+  }, 1500);
+}
+}
+```
