@@ -5,27 +5,27 @@ let lockBoard = false;
 let firstCard, secondCard;
 
 function flipCard(){
+  if (lockBoard) return;
+
   this.classList.add('flip');
 
   if (!hasFlippedCard){
     hasFlippedCard = true;
     firstCard = this;
-  } else {
-    hasFlippedCard = false;
-    secondCard = this;
+    return;
+  } 
 
-    checkForMatch();
-  }
+  hasFlippedCard = false;
+  secondCard = this;
+
+  checkForMatch();
 }
 
 cards.forEach(card => card.addEventListener('click', flipCard));
 
-function checkForMatch() {
-  if (firstCard.dataset.matchnumber === secondCard.dataset.matchnumber) {
-    disableCards();
-  }
-  else {
-    unflipCards();
+function checkForMatch(){
+  let isMatch = firstCard.dataset.matchnumber === secondCard.dataset.matchnumber;
+  isMatch ? disableCards() : unflipCards();
 }
 
 function disableCards() {
@@ -34,9 +34,12 @@ function disableCards() {
 }
 
 function unflipCards() {
+  lockBoard = true;
+
   setTimeout(() => {
     firstCard.classList.remove('flip');
     secondCard.classList.remove('flip');
+
+    lockBoard = false;
   }, 1500);
-}
 }
