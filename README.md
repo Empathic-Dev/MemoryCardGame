@@ -141,3 +141,31 @@ function unflipCards() {
 }
 }
 ```
+
+Now that the functions are separated theres an even shorter way to shorten our code using a ternary operator:
+
+```javascript
+function flipCard(){
+  this.classList.add('flip');
+
+  if (!hasFlippedCard){
+    hasFlippedCard = true;
+    firstCard = this;
+    return; // instead of an else statement we can just use the return statement so it exits the function
+  }
+
+  hasFlippedCard = false;
+  secondCard = this;
+
+  checkForMatch();
+}
+
+
+function checkForMatch() {
+  if (firstCard.dataset.matchnumber === secondCard.dataset.matchnumber){
+    disableCards();
+  }
+  else {
+    unflipCards();
+}
+```

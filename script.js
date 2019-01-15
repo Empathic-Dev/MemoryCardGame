@@ -10,22 +10,20 @@ function flipCard(){
   if (!hasFlippedCard){
     hasFlippedCard = true;
     firstCard = this;
-  } else {
-    hasFlippedCard = false;
-    secondCard = this;
+    return;
+  } 
 
-    checkForMatch();
-  }
+  hasFlippedCard = false;
+  secondCard = this;
+
+  checkForMatch();
 }
 
 cards.forEach(card => card.addEventListener('click', flipCard));
 
-function checkForMatch() {
-  if (firstCard.dataset.matchnumber === secondCard.dataset.matchnumber) {
-    disableCards();
-  }
-  else {
-    unflipCards();
+function checkForMatch(){
+  let isMatch = firstCard.dataset.matchnumber === secondCard.dataset.matchnumber;
+  isMatch ? disableCards() : unflipCards();
 }
 
 function disableCards() {
@@ -38,5 +36,4 @@ function unflipCards() {
     firstCard.classList.remove('flip');
     secondCard.classList.remove('flip');
   }, 1500);
-}
 }
