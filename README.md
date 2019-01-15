@@ -169,3 +169,11 @@ function checkForMatch() {
     unflipCards();
 }
 ```
+
+## Lock Board Notes
+
+Right now a player can flip all the cards without having to wait for the unflip logic to run. We can lock the board so they have to wait for the unmatching cards to flip:
+
+```javascript
+
+```
