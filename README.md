@@ -172,8 +172,16 @@ function checkForMatch() {
 
 ## Lock Board Notes
 
-Right now a player can flip all the cards without having to wait for the unflip logic to run. We can lock the board so they have to wait for the unmatching cards to flip:
+Right now a player can flip all the cards without having to wait for the unflip logic to run. We can lock the board so the player has to wait for the cards to flip back:
 
 ```javascript
+// first we create a boolean named lockBoard
+let lockBoard = false;
+
+// inside flipCard(), if lockBoard is true, return from the function. this stops the other cards from flipping
+  if (lockBoard) return;
+
+// incase the first two cards are not a match lock the board and only unlock it if the other cards have been flipped. We unlock the board in unflipCards()
+  lockBoard = true;
 
 ```
