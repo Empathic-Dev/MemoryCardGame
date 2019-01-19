@@ -185,3 +185,19 @@ let lockBoard = false;
   lockBoard = true;
 
 ```
+
+## Card Double Click Notes
+
+When a player clicks twice over the same card isMatch is going to set itself to true and disable the cards by removing it's event listener. we have to add a condition to the beginning of flipCard() to avoid that.
+
+```javascript
+// so if it's the first card click then the 'this' var holds the first card but the firstCard var is still unset. So the condition is going to evaluate to false and the function will be executed normally. if it's the second card click then the 'this' var holds the second card. Incase that equals firstCard then it will return from the function
+  if (this === firstCard) return;
+
+// in order for the condition to work after each round, we have to set firstCard and secondCard to null and extract that into its own method.
+function resetBoard(){
+  [hasFlippedCard, lockBoard] = [false, false];
+// this is an es6 destructuring assignment which keeps our code short
+  [firstCard, secondCard] = [null, null];
+}
+```
