@@ -46,3 +46,10 @@ function resetBoard(){
   [hasFlippedCard, lockBoard] = [false, false];
   [firstCard, secondCard] = [null, null];
 }
+
+(function shuffle(){
+  cards.forEach(card => {
+    let ransomPos = Math.floor(Math.random() * 12);
+    card.style.order = ransomPos;
+  });
+})();

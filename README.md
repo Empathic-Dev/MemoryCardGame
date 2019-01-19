@@ -201,3 +201,49 @@ function resetBoard(){
   [firstCard, secondCard] = [null, null];
 }
 ```
+
+## Shuffling Notes
+
+The last thing we have to do is shuffle the cards. We do this by using a flexbox property, order. Its a flex items property and it's default is 0. Which means that ever flex item belongs to the same group and they're grouped by src order. If you assign a different integer to the order property, the items will be ordered first by ascending order then my src order.
+
+So in order for us to shuffle our cards we're going to randomly generate a number between 0-11 and assign it to each of the cards. To generate a random whole number we use Math.random() wrapped in Math.floor().
+
+Math.random() returns a number between 0 and 1, excluding 1. Since we want a number between 0 and 11 we multiple Math.random by 12. 
+
+```javascript
+
+function shuffle(){
+  cards.forEach(card => {
+    let ransomPos = Math.floor(Math.random() * 12);
+  });
+}
+
+```
+
+Now that we have the random number we can apply it to the order property
+
+```javascript
+
+function shuffle(){
+  cards.forEach(card => {
+    let ransomPos = Math.floor(Math.random() * 12);
+    card.style.order = ransomPos;
+  });
+}
+
+```
+
+The cards to be shuffled before the player starts the game. So instead of calling shuffle() we can wrap it inside ()'s then add another pair of ()'s at the end to convert it into an IIFE (Immediately Invoked Function Expression)
+
+```javascript
+
+(function shuffle(){
+  cards.forEach(card => {
+    let ransomPos = Math.floor(Math.random() * 12);
+    card.style.order = ransomPos;
+  });
+})();
+
+```
+
+And the game is finally fucking finished!!! I'm so proud of myself for getting this done ^-^ 
